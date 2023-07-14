@@ -19,12 +19,12 @@ export const TaskStore = types
         }),
         loadTasksFromLocalStorage: flow(function* loadTasksFromLocalStorage() {
             if (typeof window !== 'undefined' && localStorage.getItem) {
-              const tasksData = localStorage.getItem('tasks');
-              if (tasksData) {
-                self.tasks = JSON.parse(tasksData);
-              }
+                const tasksData = localStorage.getItem('tasks');
+                if (tasksData) {
+                    self.tasks = JSON.parse(tasksData);
+                }
             }
-          }),
+        }),
     }))
 
     .actions((self) => ({
@@ -36,7 +36,7 @@ export const TaskStore = types
             self.tasks[index] = task;
             yield self.saveTasksToLocalStorage();
         }),
-        deleteTask: flow(function* (index: number) {
+        deleteTask: flow(function* (index) {
             self.tasks.splice(index, 1);
             yield self.saveTasksToLocalStorage();
         }),
