@@ -16,6 +16,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "mobx": "^6.9.1",
+    "mobx-react": "^9.0.0",
     "mobx-state-tree": "^5.1.8",
     "next": "13.4.9",
     "postcss": "8.4.26",

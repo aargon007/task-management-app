@@ -1,6 +1,5 @@
 'use client'
-import { types, flow, getRoot } from 'mobx-state-tree';
-import { createContext, useContext, ReactNode } from 'react';
+import { types, flow } from 'mobx-state-tree';
 
 export const Task = types.model('Task', {
     title: types.string,
@@ -19,11 +18,13 @@ export const TaskStore = types
             localStorage.setItem('tasks', saveTask);
         }),
         loadTasksFromLocalStorage: flow(function* loadTasksFromLocalStorage() {
-            const tasksData = localStorage.getItem('tasks');
-            if (tasksData) {
+            if (typeof window !== 'undefined' && localStorage.getItem) {
+              const tasksData = localStorage.getItem('tasks');
+              if (tasksData) {
                 self.tasks = JSON.parse(tasksData);
+              }
             }
-        }),
+          }),
     }))
 
     .actions((self) => ({
@@ -41,29 +42,10 @@ export const TaskStore = types
         }),
     }))
 
-// Create a context to hold the store instance
-type TaskStoreType = typeof TaskStore.Type;
-const StoreContext = createContext<TaskStoreType | null>(null);
+const store = TaskStore.create({
+    tasks: [],
+});
 
-// Create a wrapper component to provide the store to the app
-export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const store = TaskStore.create({ tasks: [] });
-  return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
-};
+store.loadTasksFromLocalStorage();
 
-// Custom hook to access the store
-export const useStore = (): TaskStoreType => {
-  const store = useContext(StoreContext);
-  if (!store) {
-    throw new Error('useStore must be used within a StoreProvider');
-  }
-  return store;
-};
-
-// const store = TaskStore.create({
-//     tasks: [],
-// });
-
-// store.loadTasksFromLocalStorage();
-
-// export default store;
+export default store;

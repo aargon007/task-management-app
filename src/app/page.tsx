@@ -1,5 +1,6 @@
 'use client'
 import AddTaskModal from '@/components/AddTaskModal';
+import TaskList from '@/components/TaskList';
 import { useState } from 'react';
 
 const Home = () => {
@@ -29,8 +30,9 @@ const Home = () => {
       </div>
 
       <div className='mt-10'>
-        <h1>My Task</h1>
+        <TaskList></TaskList>
       </div>
+
       {isModalOpen && <AddTaskModal closeModal={closeModal} />}
     </main>
   )

@@ -1,8 +1,11 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
-import { useStore } from '@/utils/TaskStore';
+// import { useStore } from '@/utils/TaskStore';
+import store from '@/utils/TaskStore';
+import { observer } from 'mobx-react';
 
-const AddTaskModal: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
-    const taskStore = useStore();
+const AddTaskModal: React.FC<{ closeModal: () => void }> = observer(({ closeModal }) => {
+    const taskStore = store;
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
@@ -69,7 +72,7 @@ const AddTaskModal: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
                             >
                                 Task Title
                             </label>
-                            <input type="text" id='title' value={title} onChange={handleTitleChange} className="w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                            <input required type="text" id='title' value={title} onChange={handleTitleChange} className="w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
                         </div>
                         <div className="mb-4">
                             <label
@@ -78,7 +81,7 @@ const AddTaskModal: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
                             >
                                 Description
                             </label>
-                            <textarea rows={3} value={description} onChange={handleDescriptionChange} className="w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" id='description' />
+                            <textarea required rows={3} value={description} onChange={handleDescriptionChange} className="w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" id='description' />
                         </div>
                         <div className="mb-4">
                             <label
@@ -87,8 +90,9 @@ const AddTaskModal: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
                             >
                                 Status
                             </label>
-                            <select id="status" value={status} onChange={handleStatusChange}
+                            <select id="status" value={status} onChange={handleStatusChange} required
                                 className="w-full py-2 border border-gray-300 focus:outline-none focus:border-sky-500 text-gray-700 rounded px-2 md:px-3 tracking-wider">
+                                <option value="">select</option>
                                 <option value="To Do">To Do</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Completed">Completed</option>
@@ -106,6 +110,6 @@ const AddTaskModal: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
         </div>
 
     );
-};
+})
 
 export default AddTaskModal;
