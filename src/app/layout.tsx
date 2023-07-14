@@ -18,7 +18,7 @@ const RootLayout = ({
   
       <html lang="en">
       <body className={`${inter.className}`}>
-        <h1 className=' py-2 bg-blue-200 text-center text-3xl font-semibold'>Task Management System</h1>
+        <h1 className='py-3 bg-blue-200 text-center text-3xl font-semibold'>Task Management System</h1>
         {children}
       </body>
     </html>
