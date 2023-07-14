@@ -92,7 +92,7 @@ const AddTaskModal: React.FC<{ closeModal: () => void }> = observer(({ closeModa
                             </label>
                             <select id="status" value={status} onChange={handleStatusChange} required
                                 className="w-full py-2 border border-gray-300 focus:outline-none focus:border-sky-500 text-gray-700 rounded px-2 md:px-3 tracking-wider">
-                                <option value="">select</option>
+                                <option value="">Select</option>
                                 <option value="To Do">To Do</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Completed">Completed</option>

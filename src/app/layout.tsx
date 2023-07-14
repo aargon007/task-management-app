@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -15,15 +16,19 @@ const RootLayout = ({
   children: React.ReactNode
 }) => {
   return (
-  
-      <html lang="en">
+
+    <html lang="en">
       <body className={`${inter.className}`}>
         <h1 className='py-3 bg-blue-200 text-center text-3xl font-semibold'>Task Management System</h1>
-        {children}
+        <main className='min-h-[calc(100vh-175px)]'>
+          {children}
+        </main>
+
+        <Footer></Footer>
       </body>
     </html>
 
-    
+
   )
 }
 

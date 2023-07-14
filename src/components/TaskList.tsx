@@ -47,7 +47,7 @@ const TaskList: React.FC = observer(() => {
             <h2 className='mb-5 text-2xl font-medium text-gray-600'>Task List</h2>
 
             {
-                !tasks && (
+                tasks.length === 0 && (
                     <div className="mb-5 md:w-[24%] border-l-4 p-4 shadow-lg space-y-3 rounded-md relative bg-slate-50 border-green-300">
                         <h3 className='text-xl font-medium border-b pb-1 text-gray-400'>Demo Title</h3>
                         <p className='text-sm leading-6 text-gray-400'>This is Demo Task description. Add Task then it will disappear. </p>

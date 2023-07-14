@@ -14,7 +14,7 @@ const Home = () => {
     setIsModalOpen(false);
   };
   return (
-    <main className="md:px-28 px-5 my-10">
+    <div className="md:px-28 px-5 my-10">
 
       <div className='flex gap-5'>
 
@@ -39,7 +39,7 @@ const Home = () => {
       </div>
 
       {isModalOpen && <AddTaskModal closeModal={closeModal} />}
-    </main>
+    </div>
   )
 }
 
