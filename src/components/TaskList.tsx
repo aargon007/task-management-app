@@ -63,9 +63,9 @@ const TaskList: React.FC = observer(() => {
                         </button>
                         {
                             selectedTaskIndex === index && taskMenu && (
-                                <div className='absolute flex flex-col top-6 right-0 bg-slate-50 py-2 px-5 gap-2'>
-                                    <button onClick={handleEditTask} className='hover:bg-blue-300 bg-blue-100 px-1 py-1 rounded-md text-sm'>Edit</button>
-                                    <button onClick={handleDeleteTask} className='hover:bg-blue-300 bg-blue-100 px-1 py-1 rounded-md text-sm'>Delete</button>
+                                <div className='absolute flex flex-col top-5 right-0 bg-slate-50 py-2 px-5 gap-2'>
+                                    <button onClick={handleEditTask} className='hover:bg-blue-300 bg-blue-100 px-2 py-1 rounded-md text-sm'>Edit</button>
+                                    <button onClick={handleDeleteTask} className='hover:bg-blue-300 bg-blue-100 px-2 py-1 rounded-md text-sm'>Delete</button>
                                 </div>)
                         }
                         <h3 className='text-xl font-medium border-b pb-1'>{task?.title}</h3>
