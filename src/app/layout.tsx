@@ -18,13 +18,17 @@ const RootLayout = ({
   return (
 
     <html lang="en">
-      <body className={`${inter.className}`}>
-        <h1 className='py-3 bg-blue-200 text-center text-3xl font-semibold px-5'>Task Management System</h1>
-        <main className='md:min-h-[calc(100vh-175px)]'>
+      <body className={`${inter.className} flex flex-col justify-between min-h-screen`}>
+
+        <main>
+          <h1 className='py-3 bg-blue-200 text-center text-3xl font-semibold px-5'>
+            Task Management System
+          </h1>
           {children}
         </main>
 
         <Footer></Footer>
+        
       </body>
     </html>
 
